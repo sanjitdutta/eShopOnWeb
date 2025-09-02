@@ -88,7 +88,7 @@ jobs:
           webAppName=${{ env.WEBAPP-NAME }}
           sku=F1
           location=${{ env.LOCATION }}
-        failOnStdErr: false   
+        failOnStdErr: false 
     
     # Publish website to Azure App Service (WebApp)
     # Step disabled due to issue where the site sometimes can't be found: https://github.com/microsoft/pipelines-appservice-lib/issues/56. Instead deploy using CLI
