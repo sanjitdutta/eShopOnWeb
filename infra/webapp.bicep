@@ -1,8 +1,8 @@
-aram webAppName string = uniqueString(resourceGroup().id)
+param webAppName string
 param sku string = 'F1'
 param location string = resourceGroup().location
 
-var appServicePlanName = 'eshoponweb-free-plan' // reuse same free plan
+var appServicePlanName = 'eshoponweb-free-plan' // reuse same plan
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: appServicePlanName
@@ -17,7 +17,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
 
 resource appService 'Microsoft.Web/sites@2022-09-01' = {
   name: webAppName
-  kind: 'app' // Windows Web App (no Linux)
+  kind: 'app' // Windows Web App
   location: location
   properties: {
     serverFarmId: appServicePlan.id
@@ -35,3 +35,5 @@ resource appService 'Microsoft.Web/sites@2022-09-01' = {
     }
   }
 }
+
+output webAppUrl string = 'https://${webAppName}.azurewebsites.net'
