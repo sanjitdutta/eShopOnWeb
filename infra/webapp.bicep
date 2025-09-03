@@ -1,8 +1,8 @@
-param webAppName string = uniqueString(resourceGroup().id)
+aram webAppName string = uniqueString(resourceGroup().id)
 param sku string = 'F1'
 param location string = resourceGroup().location
 
-var appServicePlanName = toLower('AppServicePlan-${webAppName}')
+var appServicePlanName = 'eshoponweb-free-plan' // reuse same free plan
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: appServicePlanName
@@ -17,7 +17,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
 
 resource appService 'Microsoft.Web/sites@2022-09-01' = {
   name: webAppName
-  kind: 'app' // Windows Web App
+  kind: 'app' // Windows Web App (no Linux)
   location: location
   properties: {
     serverFarmId: appServicePlan.id
