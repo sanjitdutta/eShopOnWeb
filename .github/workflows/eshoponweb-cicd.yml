@@ -83,7 +83,7 @@ jobs:
       with:
         subscriptionId: ${{ env.SUBSCRIPTION-ID }}
         resourceGroupName: ${{ env.RESOURCE-GROUP }}
-        template: infra/webapp.bicepp
+        template: infra/webapp.bicep
         parameters: >
           webAppName=${{ env.WEBAPP-NAME }}
           sku=F1
