@@ -2,7 +2,7 @@ param webAppName string
 param sku string = 'F1'
 param location string = resourceGroup().location
 
-var appServicePlanName = 'eshoponweb-free-plan' // reuse same plan
+var appServicePlanName = 'eshoponweb-free-plan'
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: appServicePlanName
